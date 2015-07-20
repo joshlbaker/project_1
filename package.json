@@ -4,18 +4,18 @@
   "description": "#hashit",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  // "scripts": {
-  //   "test": "echo \"Error: no test specified\" && exit 1"
-  // },
   "author": "Josh Baker",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^0.8.3",
     "body-parser": "^1.13.2",
     "express": "^4.13.1",
     "express-session": "^1.11.3",
     "mongo": "^0.1.0",
+    "mongoose": "^4.0.8",
     "node": "0.0.0"
   }
 }
