@@ -18,8 +18,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body 
-    style="background-image: url(https://download.unsplash.com/photo-1429277096327-11ee3b761c93)">
+  <body
+    style="background-image: url(https://download.unsplash.com/uploads/1413152676137eccd463c/61606b7b)">
       <div class="container-fluid">
 
         <!-- start of navbar -->
@@ -58,7 +58,7 @@
                 </div>
               </form>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Sign In</a></li>
+                <li><a href="#" id="sign">Sign In</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu">
@@ -75,6 +75,46 @@
         </nav>
 
         <!-- end of navbar -->
+        <!-- jumbotron -->
+        <div class="jumbotron">
+          <div class="container">
+            <div id="words">
+            <h1 id="hash">#hashIt</h1>
+                <!-- social -->
+
+                <div id="share-buttons" align="center">
+
+                  <!-- Facebook -->
+                  <a href="https://www.facebook.com/josh.baker.3956" target="_blank">
+                      <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+                  </a>
+                  
+                  <!-- Google+ -->
+                  <a href="google.com/+JoshuaBaker111" target="_blank">
+                      <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+                  </a>
+                  
+                  <!-- LinkedIn -->
+                  <a href="https://www.linkedin.com/in/joshlbaker" target="_blank">
+                      <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+                  </a>
+
+                  <!-- Twitter -->
+                  <a href="https://twitter.com/joshlbaker_" target="_blank">
+                      <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+                  </a>
+
+                </div>
+
+
+
+            <!-- end social -->
+          </div>
+          </div>
+        </div>
+        <!-- end of jt -->
+
+
     <div class="container-fluid">
         <div class= "col-md-4" id="left_col">
           <div class="well well-lg" id="leftWell">
@@ -88,18 +128,26 @@
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="#HashIt">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
+                      <button class="btn btn-default" type="button" id="butt">Go!</button>
                     </span>
                   </div>
                 </div><!-- /.col-lg-6 -->
               </div><!-- /.row -->
 
               <!-- end of search bar -->
+               <form class="sign-up">
+                   <h1 class="sign-up-title">Sign up</h1>
+                   <input type="text" class="sign-up-input" placeholder="What's your username?" autofocus>
+                   <input type="password" class="sign-up-input" placeholder="Choose a password">
+                   <input type="submit" value="Sign me up!" class="sign-up-button">
+                 </form>
+
+              <!-- end of panel 3 -->
 
               <!-- panel 1 -->
 
               <div class="panel panel-default" id="panel">
-                <div class="panel-heading">
+                <div class="panel-heading" id="head1">
                   <h3 class="panel-title">Getting Started</h3>
                 </div>
                 <div class="panel-body">
@@ -111,7 +159,7 @@
               <!-- panel 2 -->
 
               <div class="panel panel-default" id="panel2">
-                <div class="panel-heading">
+                <div class="panel-heading" id="head2">
                   <h3 class="panel-title">A little more about our product..</h3>
                 </div>
                 <div class="panel-body">
@@ -122,13 +170,16 @@
 
               <!-- panel 3 -->
 
-              <div class="panel panel-default" id="panel3">
-                <div class="panel-heading">
+              <!-- <div class="panel panel-default" id="panel3"> -->
+         <!--        <div class="panel-heading" id="head3">
                   <h3 class="panel-title">A little more about our product..</h3>
-                </div>
-                <div class="panel-body">
-                  Simply type in a hash tag of choice. Once the form is submitted, a grid of images will appear on the right hand side of the page associated with what you typed in. Enjoy!              </div>
-              </div>
+                </div> -->
+<!--                <form class="sign-up">
+                   <h1 class="sign-up-title">Sign up</h1>
+                   <input type="text" class="sign-up-input" placeholder="What's your username?" autofocus>
+                   <input type="password" class="sign-up-input" placeholder="Choose a password">
+                   <input type="submit" value="Sign me up!" class="sign-up-button">
+                 </form>
 
               <!-- end of panel 3 -->
 
@@ -139,29 +190,29 @@
 
               <!-- social -->
 
-              <div id="share-buttons" align="center">
+              <!-- <div id="share-buttons" align="center"> -->
 
                 <!-- Facebook -->
-                <a href="https://www.facebook.com/josh.baker.3956" target="_blank">
+           <!--      <a href="https://www.facebook.com/josh.baker.3956" target="_blank">
                     <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
-                </a>
+                </a> -->
                 
                 <!-- Google+ -->
-                <a href="google.com/+JoshuaBaker111" target="_blank">
+           <!--      <a href="google.com/+JoshuaBaker111" target="_blank">
                     <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
                 </a>
-                
+                 -->
                 <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/joshlbaker" target="_blank">
+              <!--   <a href="https://www.linkedin.com/in/joshlbaker" target="_blank">
                     <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
-                </a>
+                </a> -->
 
                 <!-- Twitter -->
-                <a href="https://twitter.com/joshlbaker_" target="_blank">
+   <!--              <a href="https://twitter.com/joshlbaker_" target="_blank">
                     <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
                 </a>
 
-              </div>
+              </div> -->
 
 
 
@@ -176,7 +227,7 @@
             <!-- panel 3 -->
 
             <div class="panel panel-default" id="panel4">
-              <div class="panel-heading">
+              <div class="panel-heading" id="head4">
                 <h3 class="panel-title">Discover something new..</h3>
               </div>
               <div class="panel-body">
@@ -263,16 +314,25 @@
 
 
             <!-- end of grid -->
+           
+
           </div>
+
       </div>
+
     </div>
+
 </div>
+
+<div id="footer">
+</div>
+
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="scripts/script.js"></script>
-  
   </body>
 </html>
