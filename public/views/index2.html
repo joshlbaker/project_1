@@ -10,7 +10,7 @@
 
     <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="style.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -107,6 +107,16 @@
                   </a>
 
                 </div>
+                <hr>
+                <form id="hash-search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="hash" placeholder="#HashIt" autofocus>
+                </div>
+                  <span class="input-group-btn">
+                    <div class="form-group">
+                    <input type="submit" class="btn btn-danger" type="button" id="submit" value="Go!">
+                  </div>
+                </form>
 
 
 
@@ -117,61 +127,57 @@
         <!-- end of jt -->
 
 
-    <div class="container-fluid">
-        <div class= "col-md-4" id="left_col">
-          <div class="well well-lg" id="leftWell">
-            <div class= "row">
-              <h4>Be inspired..</h4>
+    <!-- <div class="container-fluid"> -->
+        <!-- <div class= "col-md-12" id="left_col"> -->
+          <!-- <div class="well well-lg" id="leftWell"> -->
+            <!-- <div class= "row"> -->
+              <!-- <h4>Be inspired..</h4> -->
+
+  
+              
+
 
               <!-- search bar -->
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-md-12">
-                  <form id="hash-search">
-                  <div class="form-group">
-                    <input type="text" class="form-control" id="hashtag" placeholder="#HashIt" autofocus>
-                  </div>
-                    <!-- <span class="input-group-btn"> -->
-                      <div class="form-group">
-                      <input type="submit" class="btn btn-primary" type="button" id="submit" value"Search">
-                    </div>
-                  </form>
+ -->
                     <!-- </span> -->
-                  </div>
-                </div><!-- /.col-lg-6 -->
-              </div><!-- /.row -->
+           <!--        </div>
+                </div>/.col-lg-6
+              </div> /.row -->
 
               <!-- end of search bar -->
-               <form class="sign-up">
+               <!-- <form class="sign-up">
                    <h1 class="sign-up-title">Sign up</h1>
                    <input type="text" class="sign-up-input" placeholder="What's your username?" autofocus>
                    <input type="password" class="sign-up-input" placeholder="Choose a password">
                    <input type="submit" value="Sign me up!" class="sign-up-button">
-                 </form>
+                 </form> -->
 
               <!-- end of panel 3 -->
 
               <!-- panel 1 -->
 
-              <div class="panel panel-default" id="panel">
+              <!-- <div class="panel panel-default" id="panel">
                 <div class="panel-heading" id="head1">
                   <h3 class="panel-title">Getting Started</h3>
                 </div>
                 <div class="panel-body">
                   Simply type in a hash tag of choice. Once the form is submitted, a grid of images will appear on the right hand side of the page associated with what you typed in. Enjoy!              </div>
-              </div>
+              </div> -->
 
               <!-- end on panel 1 -->
 
               <!-- panel 2 -->
 
-              <div class="panel panel-default" id="panel2">
+              <!-- <div class="panel panel-default" id="panel2">
                 <div class="panel-heading" id="head2">
                   <h3 class="panel-title">A little more about our product..</h3>
                 </div>
                 <div class="panel-body">
                   Simply type in a hash tag of choice. Once the form is submitted, a grid of images will appear on the right hand side of the page associated with what you typed in. Enjoy!              </div>
-              </div>
+              </div> -->
 
               <!-- end of panel 2 -->
 
@@ -193,7 +199,7 @@
 
 
 
-            </div>
+            <!-- </div> -->
 
               <!-- social -->
 
@@ -224,24 +230,23 @@
 
 
           <!-- end social -->
-
+<!-- 
           </div>
         </div>
         <div class= "col-md-8" id="right_col">
           <div class= "row" id="row">
-
+ -->
 
             <!-- panel 3 -->
 
-            <div class="panel panel-default" style="color:#3B3738" id="panel4">
+            <!-- <div class="panel panel-default" style="color:#3B3738" id="panel4">
               <div class="panel-heading" id="head4">
                 <h3 class="panel-title">Discover something new..</h3>
               </div>
 
               <div class="panel-body">
                 Simply type in a hash tag of choice. Once the form is submitted, a grid of images will appear on the right hand side of the page associated with what you typed in. Enjoy!              </div>
-            </div>
-            <div id="results"></div>
+            </div> -->
 
             <!-- end of panel 3 -->
 
@@ -251,8 +256,8 @@
              <!-- start of grid -->
                 <!-- <h3>TEST TEST TEST</h3>  -->
               
-<!--               <ul class="cbp-rfgrid">
-=                  <li id="results"><a href="#"><div></div></a></li>
+          <!--     <ul class="cbp-rfgrid">
+                 <li id="results"><a href="#"><div></div></a></li>
                   <li id="results"><a href="#"><div></div></a></li>
                   <li id="results"><a href="#"><div></div></a></li>
                   <li id="results"><a href="#"><div></div></a></li>
@@ -321,7 +326,7 @@
 
       </div>
 
-      <!-- <div id="results"></div> -->
+      <div id="results"></div>
 
     </div>
 
@@ -338,21 +343,22 @@
     <!-- underscore -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <!-- custom script -->
-    <script src="scripts/script.js"></script>
+    <script src="script.js"></script>
     <!-- underscore template -->
     <script type="text/template" id="hash-template">
       <div class="cbp-rfgrid">
       <p>
       <div class="col-md-12">
-      <a href="#" style="color:#337ab7">
+      // <a href="#">
             <img src='<%= image %>'>
             </div>
             <div>
-            <hr>
             <div id="text"><%= text %>
             </div>
-            </a>
+            // </a>
             </p>
+            <br>
+            <hr>
       </div>
       </script>
 

@@ -56,6 +56,7 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/views/index.html');
 });
 
+
 // profile page
 app.get('/profile', function (req, res) {
   // check for current (logged-in) user
