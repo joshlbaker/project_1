@@ -52,12 +52,11 @@ $(function() {
   				list.render();
 
   			});
-
 			});
 		});
 	});
 });
-			
+
 
 
 // standard_resolution
