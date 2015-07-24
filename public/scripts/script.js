@@ -122,30 +122,43 @@ $(function() {
 			}
 		});
 
-  	$("#favorites-container").on("click", "", function(e){
-  	     console.log("containter was clicked...",$(this))
-  	     // var $iconRow = $(this).parent().parent();
-  	     // console.log("the iconRow", $iconRow.html() );
-  	     // var $image = $iconRow.prev(".row-looks").find("section img");
-  	     // console.log("the selected img", $img.attr("src") );
-  	     // var favorite = {url: $image.attr("src")};
-  	     // $.ajax({
-  	     //   url: "/users/" + user._id + "/favorites",
-  	     //   type: "POST",
-  	     //   data: favAll,
-  	     //   success: function(data){
-  	     //     console.log("this post was add", data);
-  	       // }
-  	     });
+
+  	//results is where I'm pulling data from
+  	$("#results").on("click", "img", function(e){
+  	     console.log("image was clicked...",$(this))
+  	     var $favImg = $(this);
+  	     console.log("the fav pic", $favImg.html());
+  	     var $image = $favImg.prev("img").find("favorites");
+  	     console.log("the selected img", $image.attr(data) );
+  	     // var favorite = checkedInputs.map(function(){
+  	     	// {image: $(this).attr("src")}
+  	     // });
+  	     $.ajax({
+  	       url: "/favorites",
+  	       type: "POST",
+  	       data: $favImg,
+  	       success: function(data){
+  	     	 var favorite = checkedInputs.map(function(){
+  	       	{image: $(this).attr("src")
+  	       	}
+  	         // console.log("this post was add", data);
+  	         // _.each($favImg, function(img) {
+  	         //     $favImg.val(); 
+  	         // });
+
+
+  	     		});
+
+					}
+
+  				});
+
+
+					});
 
 	});
-
-
-
-
-
-
 });
+
 
 
 

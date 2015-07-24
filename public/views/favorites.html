@@ -94,7 +94,7 @@
                 <div class="container-fluid">
                   <div class="well well-lg" id="leftWelll">
 
-                    <ul id=""></ul>
+                    <ul id="fav-container"></ul>
 
                   </div>
               </div>
@@ -182,7 +182,22 @@
       </div>
       </script>
 
-      <!-- nav template -->
+      <!-- fav template -->
+      <script type="text/template" id="fav-template">
+        <div class="cbp-rfgrid">
+        <p>
+        <div class="col-md-12">
+        <a href="#" style="color:#337ab7">
+              <img src='<%= image %>'>
+              </div>
+              <div>
+              <hr>
+              <div id="text"><%= text %>
+              </div>
+              </a>
+              </p>
+        </div>
+        </script>
 
 
 

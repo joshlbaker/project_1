@@ -142,8 +142,8 @@ app.get('/api/users/current', function (req, res) {
 app.post('/api/users/current/favorites', function (req, res) {
   // create new log with form data (`req.body`)
   var newFavorite = new Favorite({
-    image: req.body.image,
-    text: req.body.text
+    image: req.body.image
+    // text: req.body.text
   });
 
   // save new favorite
