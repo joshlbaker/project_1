@@ -3,15 +3,16 @@ var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    // user = require('./models/user'),
+    Favorites = require('./models/favorites'),
     User = require('./models/user'),
     session = require('express-session');
+    // _ = require('underscore');
 
 // connect to mongodb
 mongoose.connect(
   process.env.MONGOLAB_URI ||
   process.env.MONGOHQ_URL ||
-  'mongodb://localhost/hash-it'
+  'mongodb://localhost/hash_it'
 );
 
 // middleware
@@ -56,7 +57,6 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/views/index.html');
 });
 
-
 // profile page
 app.get('/profile', function (req, res) {
   // check for current (logged-in) user
@@ -64,6 +64,35 @@ app.get('/profile', function (req, res) {
     // show profile if logged-in user
     if (user) {
       res.sendFile(__dirname + '/public/views/profile.html');
+    // redirect if no user logged in
+    } else {
+      res.redirect('/');
+    }
+  });
+});
+
+
+// profile page
+app.get('/favorites', function (req, res) {
+  // check for current (logged-in) user
+  req.currentUser(function (err, user) {
+    // show profile if logged-in user
+    if (user) {
+      res.sendFile(__dirname + '/public/views/favorites.html');
+    // redirect if no user logged in
+    } else {
+      res.redirect('/');
+    }
+  });
+});
+
+// favorites page
+app.post('/favorites', function (req, res) {
+  // check for current (logged-in) user
+  req.currentUser(function (err, user) {
+    // show profile if logged-in user
+    if (user) {
+      res.sendFile(__dirname + '/public/views/favorites.html');
     // redirect if no user logged in
     } else {
       res.redirect('/');
@@ -83,10 +112,11 @@ app.post('/users', function (req, res) {
   });
 });
 
+
 // authenticate user and set session
 app.post('/login', function (req, res) {
   var userData = req.body.user;
-  User.authenticate(userData.email, userData.password, function (err, user) {
+  User.authenticate(userData.username, userData.password, function (err, user) {
     req.login(user);
     res.redirect('/profile');
   });
@@ -108,46 +138,46 @@ app.get('/api/users/current', function (req, res) {
   });
 });
 
-// create new log for current user
-app.post('/api/users/current/logs', function (req, res) {
+// create new favorite for current user
+app.post('/api/users/current/favorites', function (req, res) {
   // create new log with form data (`req.body`)
-  var newLog = new Log({
-    type: req.body.type,
-    calories: req.body.calories
+  var newFavorite = new Favorite({
+    image: req.body.image,
+    text: req.body.text
   });
 
-  // save new log
-  newLog.save();
+  // save new favorite
+  newFavorite.save();
 
-  // find current user
+  //find current user
   req.currentUser(function (err, user) {
-    // embed new log in user's logs
-    user.logs.push(newLog);
-    // save user (and new log)
+    // embed new favorite in user's favorites
+    user.favorites.push(newFavorite);
+    // save user (and new favorite)
     user.save();
-    // respond with new log
-    res.json(newLog);
+    // respond with new favorite
+    res.json(newFavorite);
   });
 });
 
 // show all logs
-app.get('/api/logs', function (req, res) {
-  Log.find(function (err, logs) {
-    res.json(logs);
+app.get('/api/favorites', function (req, res) {
+  Favorite.find(function (err, favorites) {
+    res.json(favorites);
   });
 });
 
-// create new log
-app.post('/api/logs', function (req, res) {
+// create new favorite
+app.post('/api/favorites', function (req, res) {
   // create new log with form data (`req.body`)
-  var newLog = new Log({
-    type: req.body.type,
-    calories: req.body.calories
+  var newFavorite = new Favorite({
+    image: req.body.image,
+    text: req.body.text
   });
 
-  // save new log
-  newLog.save(function (err, savedLog) {
-    res.json(savedLog);
+  //save new favorite
+  newFavorite.save(function (err, savedFavorite) {
+    res.json(savedFavorite);
   });
 });
 

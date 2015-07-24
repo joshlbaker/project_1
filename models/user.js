@@ -2,17 +2,14 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcrypt'),
-    salt = bcrypt.genSaltSync(10),
-    Log = require('./log');
+    salt = bcrypt.genSaltSync(10);
+    Favorite = require('./favorites');
 
 // define user schema
 var UserSchema = new Schema({
-  firstName: String,
-  lastName: String,
-  avatar: String,
-  email: String,
+  username: String,
   passwordDigest: String,
-  logs: [Log.schema]
+  favorites: [Favorite.schema]
 });
 
 // create a new user with secure (hashed) password
@@ -28,10 +25,7 @@ UserSchema.statics.createSecure = function (userData, callback) {
 
       // create the new user (save to db) with hashed password
       that.create({
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        avatar: userData.avatar,
-        email: userData.email,
+        username: userData.username,
         passwordDigest: hash
       }, callback);
     });
@@ -39,14 +33,14 @@ UserSchema.statics.createSecure = function (userData, callback) {
 };
 
 // authenticate user (when user logs in)
-UserSchema.statics.authenticate = function (email, password, callback) {
+UserSchema.statics.authenticate = function (username, password, callback) {
   // find user by email entered at log in
-  this.findOne({email: email}, function (err, user) {
+  this.findOne({username: username}, function (err, user) {
     console.log(user);
 
     // throw error if can't find user
     if (user === null) {
-      throw new Error('Can\'t find user with email ' + email);
+      throw new Error('Can\'t find user with username ' + username);
 
     // if found user, check if password is correct
     } else if (user.checkPassword(password)) {

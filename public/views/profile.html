@@ -37,32 +37,31 @@
                 <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand" href="/">#hashIt</a>
+
             </div>
 
-<!--             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
- -->
-              <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
-                <!-- <ul class="nav navbar-nav navbar-right" id="nav-links"> -->
-                  <ul class="nav navbar-nav">
-                  </ul>
-
-                  <ul class="nav navbar-nav navbar-right" id="nav-links">
-                  <script type="text/template" id="nav-template">
-                    <% if (currentUser) { %>
-                      <li><a href="/profile">Profile</a></li>
-                      <li><a href="/logout">Log Out</a></li>
-                    <% } else { %>
-                      <li><a href="#" data-toggle="modal" data-target="#signup-modal">Sign Up</a></li>
-                      <li><a href="#" data-toggle="modal" data-target="#login-modal">Log In</a></li>
-                    <% } %>
-                  </script>
-                </ul>  
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  
+          
+              <ul class="nav navbar-nav navbar-right" id="nav-links">
+                <!-- underscore template for nav links -->
+                <script type="text/template" id="nav-template">
+                  <% if (currentUser) { %>
+                  <li id="welcome">Not, <%= currentUser.username %>?</li>
+                    <li><a href="/logout">Log Out</a></li>
+                  <% } else { %>
+                    <li>"Not " + (currentUser) + "?"</li>
+                    <li><a href="#" data-toggle="modal" data-target="#signup-modal">Sign Out</a></li>
+                  <% } %>
+                </script>
+                <ul class="nav navbar-nav">
+                  <a class="glyphicon glyphicon-star" href="/favorites" id="favs"></a>
+                </ul>
+              </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container -->
         </nav>
         <!-- end of navbar -->
-
-
         <!-- jumbotron -->
         <div class="jumbotron">
           <div class="container">
@@ -94,10 +93,10 @@
               <form method="post" action="/users">
                 <div class="modal-body">
                   <div class="form-group">
-                    <input type="username" name="user[username]" class="form-control" placeholder="Pick a Username!">
+                    <input type="username" name="user[username]" class="form-control" placeholder="Choose a Username!">
                   </div>
                   <div class="form-group">
-                    <input type="password" name="user[password]" class="form-control" placeholder="Choose a Password!" maxlength="16">
+                    <input type="password" name="user[password]" class="form-control" placeholder="Choose a Password!">
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -139,16 +138,13 @@
         <div class= "col-md-4" id="left_col">
           <div class="well well-lg" id="leftWell">
             <div class= "row">
-              <h4 id="betitle">Welcome to #hashIt</h4>
-
+         
+ 
               <!-- search bar -->
 
-              </div><!-- /.row -->
 
-              <!-- end of search bar -->
-       
 
-              <!-- end of panel 3 -->
+    
 
               <!-- panel 1 -->
 
@@ -157,7 +153,7 @@
                   <h3 class="panel-title">Getting Started</h3>
                 </div>
                 <div class="panel-body">
-                  Search for any tag, word, or phrase. Once the form is submitted, a grid of images will appear on the right hand side of the page associated with what you typed in. Enjoy!              </div>
+                  Simply type in a hash tag of choice. Once the form is submitted, a grid of images will appear on the right hand side of the page associated with what you typed in. Enjoy!              </div>
               </div>
 
               <!-- end on panel 1 -->
@@ -166,35 +162,13 @@
 
               <div class="panel panel-default" id="panel2">
                 <div class="panel-heading" id="head2">
-                  <h3 class="panel-title">Sign up to unlock more features</h3>
+                  <h3 class="panel-title">A little more about our product..</h3>
                 </div>
-                <div class="panel-body" style="position:inline">
-                  <p>Fill out the quick and easy 'Sign Up' form below to advance and become a </p><p style="color:gold">GOLDEN STAR MEMBER.</p><p> Once you're in you can easily select items from the results of your search and save them into your 'favorites' page. How exciting?!</p>               </div>
+                <div class="panel-body">
+                  Simply type in a hash tag of choice. Once the form is submitted, a grid of images will appear on the right hand side of the page associated with what you typed in. Enjoy!              </div>
               </div>
 
               <!-- end of panel 2 -->
-              <div id="signup-modal2">
-                <!-- <div class="modal-dialog"> -->
-          <!--         <div class="modal-content">
-                    <div id="modal-title">
-                      <h4 class="modal-title" id="myModalLabel2">Sign Up</h4>
-                    </div>
-                    <form method="post" action="/users">
-                      <div id="modal-body">
-                        <div class="form-group">
-                          <input type="username" name="user[username]" class="form-control" placeholder="Pick a Username!">
-                        </div>
-                        <div class="form-group">
-                          <input type="password" name="user[password]" class="form-control" placeholder="Choose a Password!" maxlength="16">
-                        </div>
-                      </div>
-                      <div id="modal-button">
-                        <input type="submit" value="Sign Up" class="btn btn-primary">
-                      </div>
-                    </form>
-                </div> -->
-              </div>
-
               <!-- social -->
 
               <div id="share-buttons" align="center">
@@ -220,6 +194,18 @@
                 </a>
               </div>
 
+              <!-- <div class="col-md-6 col-sm-8"> -->
+                <div="container-fluid" id="favorites-container">
+
+
+                </div>
+              </div>
+
+
+
+            <!-- </div> -->
+
+
             </div>
 
 
@@ -241,10 +227,7 @@
 
     </div>
 
-
-    
-  </div>
-</div>
+<!-- </div> -->
 
 
 
@@ -258,8 +241,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <!-- custom script -->
     <script src="scripts/script.js"></script>
-
-    <!-- hash template -->
+    <!-- underscore template -->
     <script type="text/template" id="hash-template">
       <div class="cbp-rfgrid">
       <p>
@@ -275,10 +257,27 @@
             </p>
       </div>
       </script>
+      <div class="panel panel-default" id="show-user">
+        <!-- underscore template for user profile -->
+        <script type="text/template" id="user-template">
+          <div class="panel-heading">
+            <strong>Welcome, <%= currentUser.username %>!</strong>
+          </div>
+          
+          <ul class="list-group" id="user-favorite-list">
+           
+          </ul>
+        </script>
 
-      <!-- nav template -->
-
-
+        <!-- underscore template for user favorite -->
+        <script type="text-template" id="user-favorite-template">
+          <li class="list-group-item">
+            <span class="label label-success"><img src='<%= image %>'></span>
+            &nbsp;
+            <%= text %> 
+          </li>
+        </script>
+      </div>
 
   </body>
 </html>

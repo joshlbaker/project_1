@@ -47,6 +47,7 @@
                   </ul>
 
                   <ul class="nav navbar-nav navbar-right" id="nav-links">
+                  
                   <script type="text/template" id="nav-template">
                     <% if (currentUser) { %>
                       <li><a href="/profile">Profile</a></li>
@@ -56,6 +57,7 @@
                       <li><a href="#" data-toggle="modal" data-target="#login-modal">Log In</a></li>
                     <% } %>
                   </script>
+
                 </ul>  
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container -->
@@ -63,83 +65,14 @@
         <!-- end of navbar -->
 
 
-        <!-- jumbotron -->
-        <div class="jumbotron">
-          <div class="container">
-            <div id="words" display="inline">
-            <h1 id="it">#</h1><h1 id="hash">hash</h1><h1 id="hash">It</h1>
-            <hr>
-            <form id="hash-search">
-            <div class="form-group">
-              <input type="text" class="form-control" id="hashtag" placeholder="#HashIt" autofocus>
-            </div>
-              <div class="form-group">
-              <input type="submit" class="btn btn-primary" type="button" id="submit" value"Submit">
-            </div>
-          </form>
-            
-          </div>
-          </div>
-        </div>
-        <!-- end of jt -->
 
-        <!-- signup modal -->
-        <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signupModal">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
-              </div>
-              <form method="post" action="/users">
-                <div class="modal-body">
-                  <div class="form-group">
-                    <input type="username" name="user[username]" class="form-control" placeholder="Pick a Username!">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name="user[password]" class="form-control" placeholder="Choose a Password!" maxlength="16">
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <input type="submit" value="Sign Up" class="btn btn-primary">
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
 
-        <!-- login modal -->
-        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModal">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Log In</h4>
-              </div>
-              <form method="post" action="/login">
-                <div class="modal-body">
-                  <div class="form-group">
-                    <input type="username" name="user[username]" class="form-control" placeholder="Username">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name="user[password]" class="form-control" placeholder="Password">
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <input type="submit" value="Log In" class="btn btn-primary">
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
 
     <div class="container-fluid">
         <div class= "col-md-4" id="left_col">
           <div class="well well-lg" id="leftWell">
             <div class= "row">
-              <h4 id="betitle">Welcome to #hashIt</h4>
+              <h4 id="betitle">Favorites</h4>
 
               <!-- search bar -->
 
@@ -154,46 +87,17 @@
 
               <div class="panel panel-default" id="panel">
                 <div class="panel-heading" id="head1">
-                  <h3 class="panel-title">Getting Started</h3>
+                  <h3 class="panel-title">Welcome to your favorites page</h3>
                 </div>
                 <div class="panel-body">
-                  Search for any tag, word, or phrase. Once the form is submitted, a grid of images will appear on the right hand side of the page associated with what you typed in. Enjoy!              </div>
+                  Click the 'X' to remove recently added favorites. Click more images to keep 'em coming!              </div>
               </div>
 
               <!-- end on panel 1 -->
 
               <!-- panel 2 -->
 
-              <div class="panel panel-default" id="panel2">
-                <div class="panel-heading" id="head2">
-                  <h3 class="panel-title">Sign up to unlock more features</h3>
-                </div>
-                <div class="panel-body" style="position:inline">
-                  <p>Fill out the quick and easy 'Sign Up' form below to advance and become a </p><p style="color:gold">GOLDEN STAR MEMBER.</p><p> Once you're in you can easily select items from the results of your search and save them into your 'favorites' page. How exciting?!</p>               </div>
-              </div>
-
               <!-- end of panel 2 -->
-              <div id="signup-modal2">
-                <!-- <div class="modal-dialog"> -->
-          <!--         <div class="modal-content">
-                    <div id="modal-title">
-                      <h4 class="modal-title" id="myModalLabel2">Sign Up</h4>
-                    </div>
-                    <form method="post" action="/users">
-                      <div id="modal-body">
-                        <div class="form-group">
-                          <input type="username" name="user[username]" class="form-control" placeholder="Pick a Username!">
-                        </div>
-                        <div class="form-group">
-                          <input type="password" name="user[password]" class="form-control" placeholder="Choose a Password!" maxlength="16">
-                        </div>
-                      </div>
-                      <div id="modal-button">
-                        <input type="submit" value="Sign Up" class="btn btn-primary">
-                      </div>
-                    </form>
-                </div> -->
-              </div>
 
               <!-- social -->
 
@@ -230,20 +134,24 @@
 
           </div>
         </div>
-        <div class= "col-md-8" id="right_col">
-          <!-- <div class= "row" id="row"> -->
 
-            <li id="results"></li>
 
           <!-- </div> -->
 
       </div>
 
-    </div>
 
-
+ 
     
   </div>
+  <div class="container-fluid">
+  <div class= "col-md-8" id="newrightcol">
+    <div class="well well-lg" id="leftWell">
+
+      <li id=""></li>
+      
+    </div>
+    </div>
 </div>
 
 
