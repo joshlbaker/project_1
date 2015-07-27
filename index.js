@@ -6,7 +6,6 @@ var express = require('express'),
     Favorites = require('./models/favorites'),
     User = require('./models/user'),
     session = require('express-session');
-    // _ = require('underscore');
 
 // connect to mongodb
 mongoose.connect(
@@ -23,7 +22,7 @@ app.use(session({
   saveUninitialized: true,
   resave: true,
   secret: 'SuperSecretCookie',
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: 600000 }
 }));
 
 // middleware to manage sessions
