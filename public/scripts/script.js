@@ -59,7 +59,7 @@ $(function() {
 	var $hashSearch = $('#hash-search');
 	var $text = $('#hashtag');
 	var $results = $('#results');
-	var $hashTemp = _.template($('#bacon-template').html());
+	var $hashTemp = _.template($('#hash-template').html());
 
   $hashSearch.on('submit', function(event){
   	event.preventDefault();
