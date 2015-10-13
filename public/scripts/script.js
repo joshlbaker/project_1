@@ -1,126 +1,129 @@
-$(function() {
+$(function(){
 
 
-	  // `mainController` holds shared site functionality
-	  var mainController = {
+	// reference to last opened menu
+	var $lastOpened = false;
 
-	    // compile underscore template for nav links
-	    navTemplate: _.template($('#nav-template').html()),
 
-	    // get current (logged-in) user
-	    showCurrentUser: function() {
-	      // AJAX call to server to GET /api/users/current
-	      $.get('/api/users/current', function(user) {
-	        console.log(user);
+	// simply close the last opened menu on document click
+	$(document).click(function(){
+	  if($lastOpened){
+	    $lastOpened.removeClass('open');
+	  }
+	});
 
-	        // pass current user through template for nav links
-	        $navHtml = $(mainController.navTemplate({currentUser: user}));
 
-	        // append nav links HTML to page
-	        $('#nav-links').append($navHtml);
-	      });
+	// simple event delegation
+	$(document).on('click', '.pulldown-toggle', function(event){
+
+	  // jquery wrap the el
+	  var el = $(event.currentTarget);
+
+	  // prevent this from propagating up
+	  event.preventDefault();
+	  event.stopPropagation();
+
+	  // check for open state
+	  if(el.hasClass('open')){
+	    el.removeClass('open');
+	  }else{
+	    if($lastOpened){
+	      $lastOpened.removeClass('open');
 	    }
-	  };
+	    el.addClass('open');
+	    $lastOpened = el;
+	  }
 
-	  mainController.showCurrentUser();
+	});
+	// Setting form variables
+	var $hashSearch = $("#hashSearch");
+	var $field = $("#field");
 
-	  $('#login-form').on("submit", function(event){
-	    var userData = {
-	      email: $("#login-user-email").val(),
-	      password: $("#login-user-password").val()
-	    };
-	    $.post('/login', userData, function(response){
-	      console.log(response);
-	    });
-	  });
-	// });
+  $(document).ready( function() {
 
-	// Constructor
+    $('.grid').masonry({
+      itemSelector: '.grid-item',
+      columnWidth: 160
+    });
 
-	function HashList(image, text){
-		this.image = image;
-		this.text = text;
-	}
-	HashList.all = [];
+  });
 
-	HashList.prototype.save = function(){
-		HashList.all.push(this);
-		console.log(HashList.all);
-	};
+	// Setting event listener
+	$hashSearch.on('submit', function(event){
+	  	event.preventDefault();
+	  	var searchField = $field.val().replace(/\s/g, '');
 
-	HashList.prototype.render = function(){
-		var $hashTemp = _.template($('#hash-template').html());
-		var $hashT = ($hashTemp(this));
-		var index = HashList.all.indexOf(this);
-		// $hashT.attr('data-index', index);
-		$results.append($hashT);
-  }
-
-	var $hashSearch = $('#hash-search');
-	var $text = $('#hashtag');
-	var $results = $('#results');
-	var $hashTemp = _.template($('#hash-template').html());
-
-  $hashSearch.on('submit', function(event){
-  	event.preventDefault();
-  	console.log('submitform')
-  	//removes spaces from search input
-  	var searchHash = $text.val().replace(/\s/g, '');
-  	console.log('this is searchhash')
-  	console.log(searchHash);
-
-  	$.ajax({
+    $.ajax({
   		type: 'GET',
-  		url:'https://api.instagram.com/v1/tags/' + searchHash + '/media/recent?client_id=37b1b2aa5abe47afb6643e32fc8f236a', 
+  		url:"https://api.instagram.com/v1/tags/" + searchField + "/media/recent?client_id=932bebc9cffc4be5bcde1602b71a37d6",
   		dataType: 'jsonp',
   		crossDomain: true,
   		success: function(data){
+        console.log(data)
+        var searchF = [];
+        searchF.push("Showing results for " + '<strong><i>' + searchField + '</i></strong>' + "<br>" + "<br>");
+
+        $( "<p/>", {
+          "class": "searchF",
+          html: searchF.join( "" )
+        }).appendTo( "#searchF" );
+
   			_.each(data.data, function(obj){
+          var photo = [];
   				var image = (obj.images.low_resolution.url);
   				var text = (obj.caption.text);
-  				var list = new HashList( image, text);
-  				console.log(image, text);
-  				
-  				list.save();
+          var likes = (obj.likes.count);
 
-  				list.render();
+
+          // console.log()
+          // var likes =
+          photo.push("<span class='glyphicon glyphicon-heart'>" + " " + likes + '<br>' + '<br>' + "</span>");
+    	  	photo.push('<img src=' + image + '>' + '<br>');
+          if (text.length < 100){
+          photo.push("<br>" + "<legend style='width:200px;'>" + text + "</legend>");
+        }else{
+          photo.push("<br>" + "<legend style='width:200px;'>" + "#" + searchField + "</legend>");
+        }
+          // photo.push(text)
+    		  $( "<p/>", {
+    		    "class": "grid-item",
+    		    html: photo.join( "" )
+    		  }).appendTo( "#results" );
+
+
+          // if
+
+
   			});
 			}
 		});
+    $hashSearch[0].reset() //resets the form
 
-  	//results is where I'm pulling data from
-  	$("#results").on("click", "img", function(e){
-  	     console.log("image was clicked...",$(this))
-  	     var $favImg = $(this);
-  	     console.log("the fav pic", $favImg.html());
-  	     var $image = $favImg.prev("img").find("favorites");
-  	     console.log("the selected img", $image.attr(data) );
-  	     // var favorite = checkedInputs.map(function(){
-  	     	// {image: $(this).attr("src")}
-  	     // });
-  	     $.ajax({
-  	       url: "/favorites",
-  	       type: "POST",
-  	       data: $favImg,
-  	       success: function(data){
-  	     	 var favorite = checkedInputs.map(function(){
-  	       	{image: $(this).attr("src")
-  	       	}
-  	         // console.log("this post was added", data);
-  	         // _.each($favImg, function(img) {
-  	         //     $favImg.val(); 
-  	         // });
+	}); //end of get request
 
-
-  	     		});
-					 }
-  				});
-				});
-	});
-});
+  $.ajax({
+    type: 'GET',
+    url:"https://api.instagram.com/v1/media/popular?access_token=473020249.932bebc.ac928e49100d436da63fe63a91bfdce0",
+    dataType: 'jsonp',
+    crossDomain: true,
+    success: function(data){
+      console.log(data);
+      _.each(data.data, function(obj){
+        var popularPhoto = [];
+        var popularImage = (obj.images.low_resolution.url);
+        var likes = (obj.likes.count);
+        var text = (obj.caption.text);
+        popularPhoto.push("<span class='glyphicon glyphicon-heart'>" + " " + likes + '<br>' + '<br>' + "</span>");
+        popularPhoto.push('<img src=' + popularImage + '>');
+        popularPhoto.push("<br>" + "<legend>" + text + "</legend>");
+        $( "<p/>", {
+          "class": "grid-item",
+          html: popularPhoto.join( "" )
+        }).appendTo( "#topPost" );
+      })
+    }
+  });
+	$hashSearch[0].reset() //resets the form
 
 
-
-
-
-
+}); //end of on onSubmit
