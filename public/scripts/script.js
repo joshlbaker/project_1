@@ -1,4 +1,5 @@
 $(function(){
+
 	// reference to last opened menu
 	var $lastOpened = false;
 	// simply close the last opened menu on document click
@@ -68,12 +69,16 @@ $(function(){
     		    html: photo.join( "" )
     		  }).appendTo( "#results" );
   			});
+
 			}
+
 		});
     $hashSearch[0].reset() //resets the form
 		$("#search_submit").click(function(){
-    $("#results").empty();
-});
+			$("#results").empty();
+		});
+
+
 	}); //end of 1st get request
   $.ajax({
     type: 'GET',
@@ -98,5 +103,7 @@ $(function(){
     }
   });
 	$hashSearch[0].reset() //resets the form
+
+
 
 }); //End of script
